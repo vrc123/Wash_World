@@ -1,13 +1,24 @@
 import styles from '@/styles/Product.module.css'
 import { useRouter } from 'next/router';
-import Link from 'next/link'
+import { useEffect } from 'react';
+import Button from '@/components/Button';
 
 export default function Product() {
 
   const router = useRouter();
 
+  useEffect(() => {
+    setTimeout(()=>{
+      router.push("/");
+    }, 300000);
+  }, [])
+
   function goBack() {
     router.back()
+  }
+
+  function next() {
+    router.push("/start");
   }
 
   return (
@@ -15,10 +26,8 @@ export default function Product() {
       <h1>Product</h1>
       <p>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam at dolore temporibus, sint adipisci laudantium animi fugiat saepe, tenetur eveniet totam facere aliquam hic obcaecati voluptate reprehenderit a repudiandae quam.</p>
       <p>Price: 39.00,-</p>
-      <button onClick={goBack}>Back</button>
-      <Link href="/start">
-        <button>Next</button>
-      </Link>
+      <Button variant="secondary" label="Back" onClick={goBack} />
+      <Button variant="primary" label="Next" onClick={next} />
     </div>
   )
 }

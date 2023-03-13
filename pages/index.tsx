@@ -14,7 +14,7 @@ export default function Welcome() {
     <div className={styles.welcome}>
       <h1>Welcome</h1>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus reiciendis illo nam, labore perspiciatis, totam itaque odit temporibus atque consequatur hic at perferendis expedita nemo cumque facere voluptates dignissimos consequuntur!</p>
-      <Button variant="primary" label="Start" onClick={startProcess}  />
+      <Button variant="primary" label="Start" onClick={startProcess} />
     </div>
   )
 }

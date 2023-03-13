@@ -1,14 +1,25 @@
 import styles from '@/styles/Location.module.css'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
+import { useEffect } from 'react';
+import Button from '@/components/Button';
 
 
 export default function Location() {
   
   const router = useRouter();
 
+  useEffect(() => {
+    setTimeout(()=>{
+      router.push("/");
+    }, 600000);
+  }, [])
+
   function goBack() {
     router.back()
+  }
+
+  function next() {
+    router.push("/products");
   }
 
   return (
@@ -22,10 +33,8 @@ export default function Location() {
         <option value="">BV99123</option>
         <option value="">BV99123</option>
       </select>
-      <button onClick={goBack}>Back</button>
-      <Link href="/products">
-        <button>Next</button>
-      </Link>
+      <Button variant="secondary" label="Back" onClick={goBack} />
+      <Button variant="primary" label="Next" onClick={next} />
     </div>
   )
 }

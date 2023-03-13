@@ -1,12 +1,21 @@
 import styles from '@/styles/Start.module.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Button from '@/components/Button';
 
 export default function Start() {
 
   const [start, setStart] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (!start) {
+      setTimeout(()=>{
+        router.push("/");
+      }, 300000);
+    } 
+  }, [])
 
   function goBack() {
     router.back();
@@ -24,8 +33,8 @@ export default function Start() {
       {!start && <div>
         <h1>Start wash</h1>
         <div>Detail list</div>
-        <button onClick={goBack}>Back</button>
-        <button onClick={startWash}>Start</button>
+        <Button variant="secondary" label="Back" onClick={goBack} />
+        <Button variant="primary" label="Start" onClick={startWash} />
       </div>}
       {start && <div>
         <h1>Countdown: 10:00</h1>
