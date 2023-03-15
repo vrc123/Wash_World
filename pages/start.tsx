@@ -41,7 +41,7 @@ export default function Start() {
         <Button variant="primary" label="Start" onClick={startWash} />
       </div>}
       {start && <div>
-        <Countdown date={Date.now() + 10000} />
+        <Countdown date={Date.now() + 100000} />
         <p>Info</p>
       </div>}
     </>
