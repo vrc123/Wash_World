@@ -25,7 +25,7 @@ export default function Start() {
     setStart(true);
     setTimeout(()=>{
       router.push("/");
-    }, 1000);
+    }, 5000);
   }
   
   return (
