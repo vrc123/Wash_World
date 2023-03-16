@@ -15,7 +15,7 @@ export async function getStaticProps() {
   const data = await res.json();
 
   return {
-    props: { locations: data }
+    props: { locations: data.response.locations }
   }
 }
 
@@ -38,27 +38,12 @@ export default function Locations({ locations }: LocationsProps) {
       <h1>Locations</h1>
       {locations.map((location)=>{
         return(
-          <div key={location.id}>
-            {location.name}
-          </div>
+          <Link key={location.id} href={`/locations/${location.id}`}>
+            <div>{location.name}</div>
+            <div>{location.status}</div>
+          </Link>
         )
       })}
-      <Link href="/locations/1">
-        <div>Dynamovej 10</div>
-        <div>Status: available</div>
-      </Link>
-      <Link href="/locations/1">
-        <div>Dynamovej 10</div>
-        <div>Status: available</div>
-      </Link>
-      <Link href="/locations/1">
-        <div>Dynamovej 10</div>
-        <div>Status: available</div>
-      </Link>
-      <Link href="/locations/1">
-        <div>Dynamovej 10</div>
-        <div>Status: available</div>
-      </Link>
     </div>
   )
 }
