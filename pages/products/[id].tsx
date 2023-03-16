@@ -1,33 +1,45 @@
-import styles from '@/styles/Product.module.css'
+import styles from '@/styles/Products.module.css'
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import Link from 'next/link'
 import Button from '@/components/Button';
 
-export default function Product() {
+export default function Products() {
 
   const router = useRouter();
 
   useEffect(() => {
     setTimeout(()=>{
       router.push("/");
-    }, 300000);
+    }, 600000);
   }, [])
 
   function goBack() {
     router.back()
   }
-
-  function next() {
-    router.push("/start");
-  }
-
+  
   return (
     <div>
-      <h1>Product</h1>
-      <p>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam at dolore temporibus, sint adipisci laudantium animi fugiat saepe, tenetur eveniet totam facere aliquam hic obcaecati voluptate reprehenderit a repudiandae quam.</p>
-      <p>Price: 39.00,-</p>
-      <Button variant="secondary" label="Back" onClick={goBack} />
-      <Button variant="primary" label="Next" onClick={next} />
+      <h1>Products</h1>
+      <div>
+        <Link href="/products/1">
+          <div>Basis</div>
+          <p>Price: 59,-</p>
+        </Link>
+        <Link href="/products/1">
+          <div>Basis</div>
+          <p>Price: 59,-</p>
+        </Link>
+        <Link href="/products/1">
+          <div>Basis</div>
+          <p>Price: 59,-</p>
+        </Link>
+        <Link href="/products/1">
+          <div>Basis</div>
+          <p>Price: 59,-</p>
+        </Link>
+      </div>
+      <Button variant="tertiary" label="Back" onClick={goBack} />
     </div>
   )
 }
