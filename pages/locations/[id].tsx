@@ -1,4 +1,4 @@
-import styles from '@/styles/Location.module.css'
+import styles from '@/styles/pages/Location.module.css'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react';
 import Button from '@/components/Button';
@@ -47,7 +47,7 @@ export default function Location({ location }: LocationProps) {
 
   return (
 
-    <div>
+    <div className={styles.location}>
       <h1>Detail about account</h1>
       <p>{location.description}</p>
       <Button variant="secondary" label="Back" onClick={goBack} />

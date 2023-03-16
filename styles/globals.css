@@ -5,6 +5,14 @@
   font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
 }
 
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000000;
+}
+
 .color {
   color: #06c167;
   color: #000000;

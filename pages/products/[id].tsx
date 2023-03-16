@@ -1,4 +1,4 @@
-import styles from '@/styles/Products.module.css'
+import styles from '@/styles/pages/Products.module.css'
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import Link from 'next/link'
@@ -19,7 +19,7 @@ export default function Products() {
   }
   
   return (
-    <div>
+    <div className={styles.products}>
       <h1>Products</h1>
       <div>
         <Link href="/products/1">

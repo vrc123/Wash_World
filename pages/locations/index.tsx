@@ -1,4 +1,4 @@
-import styles from '@/styles/Locations.module.css'
+import styles from '@/styles/pages/Locations.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -34,7 +34,7 @@ export default function Locations({ locations }: LocationsProps) {
   }, [])
 
   return (
-    <div>
+    <div className={styles.locations}>
       <h1>Locations</h1>
       {locations.map((location)=>{
         return(
