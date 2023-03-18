@@ -2,6 +2,7 @@ import styles from '@/styles/Start.module.css'
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Button from '@/components/Button';
+import { Counter } from '@/features/counter';
 
 export default function Start() {
 
@@ -37,7 +38,7 @@ export default function Start() {
         <Button variant="primary" label="Start" onClick={startWash} />
       </div>}
       {start && <div>
-        <h1>Countdown: 10:00</h1>
+        <Counter></Counter>
         <p>Info</p>
       </div>}
     </>
