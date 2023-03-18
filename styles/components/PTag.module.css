@@ -1,0 +1,13 @@
+.PTagDefault {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.primary {
+    color: #06c167;
+    text-transform: uppercase;
+}
+
+.secondary {
+    color: #ffffff;
+}

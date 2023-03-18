@@ -1,5 +1,22 @@
 .welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 725px;
     height: 725px;
-    background-color: #ffffff;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.welcome p {
+    margin-bottom: 10px;
+}
+
+.welcome h1 {
+    margin-bottom: 20px;
+}
+
+.welcome button {
+    margin-top: 40px;
 }

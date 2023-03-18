@@ -1,6 +1,8 @@
 import styles from '@/styles/pages/Welcome.module.css'
 import { useRouter } from 'next/router';
 import Button from '@/components/Button'
+import PTag from '@/components/PTag';
+import H1Tag from '@/components/H1Tag';
 
 export default function Welcome() {
 
@@ -12,8 +14,9 @@ export default function Welcome() {
 
   return (
     <div className={styles.welcome}>
-      <h1>Welcome</h1>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus reiciendis illo nam, labore perspiciatis, totam itaque odit temporibus atque consequatur hic at perferendis expedita nemo cumque facere voluptates dignissimos consequuntur!</p>
+      <PTag variant="primary" text="Welcome to" />
+      <H1Tag text="Wash World" />
+      <PTag variant="secondary" text="Click on start to proceed" />
       <Button variant="primary" label="Start" onClick={startProcess} />
     </div>
   )

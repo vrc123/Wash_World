@@ -1,12 +1,14 @@
 import styles from '@/styles/pages/Locations.module.css'
-import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import PTag from '@/components/PTag';
+import H1Tag from '@/components/H1Tag';
+import Location from '@/components/Location'
 
 export interface Locations {
   id: number;
   name: string;
-  status: string;
+  status: "available" | "maintenance";
 }
 
 export async function getStaticProps() {
@@ -35,15 +37,23 @@ export default function Locations({ locations }: LocationsProps) {
 
   return (
     <div className={styles.locations}>
-      <h1>Locations</h1>
-      {locations.map((location)=>{
-        return(
-          <Link key={location.id} href={`/locations/${location.id}`}>
-            <div>{location.name}</div>
-            <div>{location.status}</div>
-          </Link>
-        )
-      })}
+      <PTag variant="primary" text="Choose" />
+      <H1Tag text="Location" />
+      <PTag variant="secondary" text="Click on a location to proceed" />
+      <div className={styles.locationList}>
+        {locations.map((location)=>{
+          
+          function selectLocation() {
+            if (location.status == "available") {
+              router.push("/locations/" + location.id);
+            }
+          }
+          
+          return(
+            <Location key={location.id} status={location.status} name={location.name} onClick={selectLocation} />
+          )
+        })}
+      </div>
     </div>
   )
 }
