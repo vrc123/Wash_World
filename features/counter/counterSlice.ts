@@ -1,7 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+
 export interface CounterState {
+  value: number
+}
+
+const initialState: CounterState = {
+  value: 60, // set initial value to 60 seconds
+}
+
+export const counterSlice = createSlice({
+  name: 'counter',
+  initialState,
+  reducers: {
+    decrement: (state) => {
+      state.value -= 1 // decrement the value every second
+    },
+  },
+})
+
+// Action creators are generated for each case reducer function
+export const { decrement } = counterSlice.actions
+
+export default counterSlice.reducer
+
+
+/*export interface CounterState {
   value: number
 }
 
@@ -28,4 +53,4 @@ export const counterSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { increment, decrement, incrementByAmount } = counterSlice.actions
 
-export default counterSlice.reducer
+export default counterSlice.reducer*/
