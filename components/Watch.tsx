@@ -1,111 +1,46 @@
-import { setup, countdown } from "@/features/watchSlice"
+import { setup, countdownSec, countdownMin, saveInterval, changeSec } from "@/features/watchSlice"
 import { RootState } from "@/store"
+import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 export default function Watch() {
 
-    const watch = useSelector((state: RootState) => state.timer.value)
-    const dispatch = useDispatch()
+  const sec = useSelector((state: RootState) => state.timer.sec)
+  const min = useSelector((state: RootState) => state.timer.min)
+  const started = useSelector((state: RootState) => state.timer.washStarted)
+  const interval = useSelector((state: RootState) => state.timer.interval)
+  const dispatch = useDispatch()
 
-    useEffect(() => {
-        console.log(watch)
-    }, [watch])
+  const router = useRouter();
 
-    useEffect(() => {
-        dispatch(setup(10))
-        const watchInterval = setInterval(()=>{
-          dispatch(countdown())
-        }, 1000);
-        return () => clearInterval(watchInterval)
-    }, [])
+  let duration = "7:00";
+  let divideByUnitOftime = duration.split(':');
 
-    /*
-
-    let duration = "00:00";
-    let divideByUnitOftime = duration.split(':');
-  
-    useEffect(() => {
-      console.log(countdown)
-    }, [countdown])
-  
-  
-    useEffect(()=>{
+  useEffect(() => {
       dispatch(setup([Number(divideByUnitOftime[0]), Number(divideByUnitOftime[1])]))
-  
-      const countdownInterval = setInterval(()=>{
-        if(countdown.sec == 0 && countdown.min == 0 && countdown.washStarted) {
-          clearInterval(countdownInterval);
-        } else {
-          dispatch(decrementSec());
-          
-          if(countdown.sec == 0) {
-            dispatch(decrementMin());
-            dispatch(changeSec(59));
-          }
-        }
-        
-        else {
-          dispatch(decrementSec())
-          if(countdown.sec == 0) {
-            dispatch(decrementMin());
-            dispatch(changeSec(59));
-          }
-        }
+
+      const watchInterval = setInterval(()=>{  
+        dispatch(countdownSec())
       }, 1000);
-      return () => clearInterval(countdownInterval)
-    }, [])
-    */
-  
-    /*
-    useEffect(()=>{
-      const countdownInterval = setInterval(()=>{
-        if(countdown.sec == 0 && countdown.min == 0) {
-          clearInterval(countdownInterval);
-        } else {
-          setSec(prev => prev -= 1)
-          if(sec == 0) {
-            setMin(prev => prev -= 1)
-            setSec(59)
-          }
-        }
-      }, 1000);
-      return () => clearInterval(countdownInterval)
-    }, [countdown.sec])
-    */
-  
-  
-    /*
-    let duration = "12:00";
-    let divideByUnitOftime = duration.split(':');
-  
-    const [min, setMin] = useState(Number(divideByUnitOftime[0]));
-    const [sec, setSec] = useState(Number(divideByUnitOftime[1]));
-  
-    useEffect(()=>{
-      setMin(Number(divideByUnitOftime[0]));
-      setSec(Number(divideByUnitOftime[1]));
-    }, [])
-  
-    useEffect(()=>{
-      const countdownInterval = setInterval(()=>{
-        if(sec == 0 && min == 0) {
-          clearInterval(countdownInterval);
-        } else {
-          setSec(prev => prev -= 1)
-          if(sec == 0) {
-            setMin(prev => prev -= 1)
-            setSec(59)
-          }
-        }
-      }, 1000);
-      return () => clearInterval(countdownInterval)
-    }, [sec])
-    */
+
+      dispatch(saveInterval(watchInterval))
+      return () => clearInterval(watchInterval)
+  }, [])
+
+  useEffect(() => {
+    if(sec === 0 && min === 0 && started) {
+      clearInterval(interval)
+      router.push("/");
+    } else if (sec === 0 && started) {
+      dispatch(countdownMin())
+      dispatch(changeSec(59))
+    }
+  }, [sec])
 
   return (
     <div>
-        {watch}
+        {min < 10 && <span>0</span>}{min}:{sec < 10 && <span>0</span>}{sec}
     </div>
   )
 }
