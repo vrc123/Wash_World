@@ -1,5 +1,29 @@
 .location {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 725px;
     height: 725px;
-    background-color: #ffffff;
+    padding: 0 100px;
+    background-color: #000000;
+}
+
+.location p {
+    margin-bottom: 10px;
+}
+
+.location h1 {
+    margin-bottom: 20px;
+}
+
+.location div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.location div span {
+    width: 25px;
 }

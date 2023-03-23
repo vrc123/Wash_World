@@ -2,20 +2,23 @@ import styles from '@/styles/pages/Start.module.css'
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Button from '@/components/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store';
+
 
 export default function Start() {
+
+  const count = useSelector((state: RootState) => state.location.value)
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    console.log("hej " + count[0])
+  })
 
   const [start, setStart] = useState(false);
 
   const router = useRouter();
 
-  useEffect(() => {
-    if (!start) {
-      setTimeout(()=>{
-        router.push("/");
-      }, 300000);
-    } 
-  }, [])
 
   function goBack() {
     router.back();
@@ -23,33 +26,6 @@ export default function Start() {
 
   function startWash() {
     setStart(true);
-
-    fetch("https://b46f027d-3a5f-4de6-9075-5e861759e531.mock.pstmn.io/:location/start/:program" , {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify(post)
-      })
-      .then((res) => {
-          if (!res.status === 201) {
-              throw new Error("Could not fetch the data!")
-          }
-          return res.json();
-      }).then(() => {
-          setIsLoading(false);
-          navigate("/profile");
-      })
-      .catch((error) => {
-          setFormError(true)
-          setError(error.message);
-          setIsLoading(false);
-      });
-
-
-    setTimeout(()=>{
-      router.push("/");
-    }, 5000);
   }
   
   return (

@@ -1,8 +1,11 @@
 import styles from '@/styles/pages/Products.module.css'
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import Link from 'next/link'
 import Button from '@/components/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { useEffect } from 'react';
+import Product from '@/components/Product';
 
 export interface Products {
   productid: number;
@@ -34,12 +37,6 @@ export default function Products({ products }: ProductsProps) {
 
   const router = useRouter();
 
-  useEffect(() => {
-    setTimeout(()=>{
-      router.push("/");
-    }, 600000);
-  }, [])
-
   function goBack() {
     router.back()
   }
@@ -49,15 +46,17 @@ export default function Products({ products }: ProductsProps) {
       <h1>Products</h1>
       <div>
         {products.map((product)=>{
+
+          function selectProduct() {
+            router.push("/start/" + product.program);
+          }
+
           return (
-            <Link key={product.productid} href={"/start/" + product.program}>
-              <div>{product.name}</div>
-              <p>{`Price: ${product.price},-`}</p>
-            </Link>
+            <Product key={product.productid} name={product.name} description={product.description} price={product.price} onClick={selectProduct} />
           );
         })}
       </div>
-      <Button variant="tertiary" label="Back" onClick={goBack} />
+      <Button variant="secondary" label="Back" onClick={goBack} />
     </div>
   )
 }

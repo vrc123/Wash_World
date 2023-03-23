@@ -10,6 +10,7 @@ export default function Location({ status, name, onClick }: LocationProps) {
   return (
     <div className={`${styles.locationDefault} ${styles[status]}`} onClick={onClick}>
       {name}
+      <div>{status}</div> 
     </div>
   )
 }

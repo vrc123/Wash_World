@@ -5,7 +5,7 @@
     justify-content: center;
     width: 725px;
     height: 725px;
-    padding: 0 50px;
+    padding: 0 100px;
     background-color: #000000;
 }
 
@@ -21,6 +21,5 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 40px;
+    margin: 40px 0 -20px 0;
 }

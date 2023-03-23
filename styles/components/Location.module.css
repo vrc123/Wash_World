@@ -1,9 +1,9 @@
 .locationDefault {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    width: 300px;
+    width: 100%;
     height: 60px;
-    border: none;
     margin-bottom: 20px;
     padding: 0 25px;
     font-size: 20px;
@@ -23,8 +23,28 @@
     filter: brightness(125%);
 }
 
+.available div {
+    padding: 5px 10px 5px 10px;
+    background-color: #06c167;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
 .maintenance {
+    display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid #f7f7f7;
     background-color: #f7f7f7;
     color: #000000;
+}
+
+.maintenance div {
+    padding: 5px 10px 5px 10px;
+    background-color: #de1a2f;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ffffff;
 }

@@ -1,7 +1,7 @@
 import styles from '@/styles/components/Button.module.css'
 
 interface ButtonProps {
-  variant: "primary" | "secondary" | "tertiary",
+  variant: "primary" | "secondary",
   label: string,
   onClick?: React.MouseEventHandler<HTMLButtonElement>,
 }

@@ -1,7 +1,12 @@
 import styles from '@/styles/pages/Location.module.css'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react';
 import Button from '@/components/Button';
+import H1Tag from '@/components/H1Tag';
+import PTag from '@/components/PTag';
+import { RootState } from '@/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { change } from '@/features/location1Slice';
+import { useEffect } from 'react';
 
 export interface Cam {
   lpn: string;
@@ -29,29 +34,35 @@ interface LocationProps {
 
 export default function Location({ location }: LocationProps) {
 
+  const count = useSelector((state: RootState) => state.location.value)
+  const dispatch = useDispatch()
+
   const router = useRouter();
 
-  useEffect(() => {
-    setTimeout(()=>{
-      router.push("/");
-    }, 600000);
-  }, [])
+  useEffect(()=>{
+    console.log(count[0])
+  }, [count])
 
   function goBack() {
     router.back()
   }
 
   function next() {
+    dispatch(change(location.location))
     router.push("/products/" + location.lpn);
   }
 
   return (
 
     <div className={styles.location}>
-      <h1>Detail about account</h1>
-      <p>{location.description}</p>
-      <Button variant="secondary" label="Back" onClick={goBack} />
-      <Button variant="primary" label="Next" onClick={next} />
+      <PTag variant='primary' text="Your" />
+      <H1Tag text='Car details' />
+      <PTag variant='secondary' text={location.description} />
+      <div>
+        <Button variant="secondary" label="Back" onClick={goBack} />
+        <span></span>
+        <Button variant="primary" label="Next" onClick={next} />
+      </div>
     </div>
   )
 }

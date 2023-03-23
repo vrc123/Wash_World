@@ -29,12 +29,6 @@ export default function Locations({ locations }: LocationsProps) {
 
   const router = useRouter();
 
-  useEffect(() => {
-    setTimeout(()=>{
-      router.push("/");
-    }, 300000);
-  }, [])
-
   return (
     <div className={styles.locations}>
       <PTag variant="primary" text="Choose" />
