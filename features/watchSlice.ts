@@ -45,6 +45,6 @@ export const watchSlice = createSlice({
     },
 })
 
-export const { setup, countdownSec, countdownMin, saveInterval, changeSec /*changeMin, changeSec, decrementMin, decrementSec, setup, reset*/ } = watchSlice.actions
+export const { setup, countdownSec, countdownMin, saveInterval, changeSec } = watchSlice.actions
 
 export default watchSlice.reducer

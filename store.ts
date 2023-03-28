@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
-import timerReducer from './features/watchSlice'
-import locationReducer from './features/location1Slice'
+import watchReducer from './features/watchSlice'
+import locationReducer from './features/locationSlice'
+import programReducer from './features/programSlice'
+import startReducer from './features/startSlice'
 
 export const store = configureStore({
   reducer: {
-    timer: timerReducer,
+    watch: watchReducer,
     location: locationReducer,
+    program: programReducer,
+    start: startReducer,
   },
 })
 

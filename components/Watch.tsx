@@ -1,23 +1,29 @@
+import styles from '@/styles/components/Watch.module.css'
 import { setup, countdownSec, countdownMin, saveInterval, changeSec } from "@/features/watchSlice"
 import { RootState } from "@/store"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-export default function Watch() {
+interface WatchProps {
+  duration: string,
+}
 
-  const sec = useSelector((state: RootState) => state.timer.sec)
-  const min = useSelector((state: RootState) => state.timer.min)
-  const started = useSelector((state: RootState) => state.timer.washStarted)
-  const interval = useSelector((state: RootState) => state.timer.interval)
+export default function Watch({ duration }: WatchProps) {
+
+  const sec = useSelector((state: RootState) => state.watch.sec)
+  const min = useSelector((state: RootState) => state.watch.min)
+  const started = useSelector((state: RootState) => state.watch.washStarted)
+  const interval = useSelector((state: RootState) => state.watch.interval)
   const dispatch = useDispatch()
 
   const router = useRouter();
 
-  let duration = "7:00";
-  let divideByUnitOftime = duration.split(':');
-
+  
   useEffect(() => {
+      
+    let divideByUnitOftime = duration.split(':');
+      
       dispatch(setup([Number(divideByUnitOftime[0]), Number(divideByUnitOftime[1])]))
 
       const watchInterval = setInterval(()=>{  
@@ -39,7 +45,7 @@ export default function Watch() {
   }, [sec])
 
   return (
-    <div>
+    <div className={styles.watch}>
         {min < 10 && <span>0</span>}{min}:{sec < 10 && <span>0</span>}{sec}
     </div>
   )

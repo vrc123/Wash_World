@@ -1,6 +1,5 @@
 import styles from '@/styles/pages/Locations.module.css'
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import PTag from '@/components/PTag';
 import H1Tag from '@/components/H1Tag';
 import Location from '@/components/Location'

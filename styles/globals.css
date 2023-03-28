@@ -13,22 +13,17 @@ body {
   background-color: #ffffff;
 }
 
-
-.color {
-  color: #06c167;
-  color: #000000;
-  color: #ffffff;
-  color: #f7f7f7;
-  color: #ff6b06;
-  color: #de1a2f;
-  color: #333333;
-  color: #666666;
+::-webkit-scrollbar {
+  width: 15px;
+  border-left: 5px solid black;
 }
 
-.header {
-  font-weight: 800;
+::-webkit-scrollbar-track {
+  background: #222222;
+  border-left: 5px solid #000000;
 }
 
-.p {
-  font-weight: 500;
+::-webkit-scrollbar-thumb {
+  background: #06c167;
+  border-left: 5px solid #000000;
 }

@@ -5,6 +5,26 @@
     justify-content: center;
     width: 725px;
     height: 725px;
+    padding: 0 100px;
     background-color: #000000;
     color: #ffffff;
+}
+
+.start p {
+    margin-bottom: 10px;
+}
+
+.start h1 {
+    margin-bottom: 20px;
+}
+
+.start .startButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.start .startButtons span {
+    width: 25px;
 }

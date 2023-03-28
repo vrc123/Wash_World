@@ -3,10 +3,8 @@ import { useRouter } from 'next/router'
 import Button from '@/components/Button';
 import H1Tag from '@/components/H1Tag';
 import PTag from '@/components/PTag';
-import { RootState } from '@/store';
-import { useDispatch, useSelector } from 'react-redux';
-import { change } from '@/features/location1Slice';
-import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { change } from '@/features/locationSlice';
 
 export interface Cam {
   lpn: string;
@@ -34,14 +32,9 @@ interface LocationProps {
 
 export default function Location({ location }: LocationProps) {
 
-  const count = useSelector((state: RootState) => state.location.value)
   const dispatch = useDispatch()
 
   const router = useRouter();
-
-  useEffect(()=>{
-    console.log(count[0])
-  }, [count])
 
   function goBack() {
     router.back()

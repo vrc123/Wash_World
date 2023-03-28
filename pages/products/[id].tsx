@@ -1,11 +1,11 @@
 import styles from '@/styles/pages/Products.module.css'
 import { useRouter } from 'next/router';
-import Link from 'next/link'
 import Button from '@/components/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/store';
-import { useEffect } from 'react';
 import Product from '@/components/Product';
+import H1Tag from '@/components/H1Tag';
+import PTag from '@/components/PTag';
+import { useDispatch } from 'react-redux';
+import { change } from '@/features/programSlice';
 
 export interface Products {
   productid: number;
@@ -35,6 +35,8 @@ interface ProductsProps {
 
 export default function Products({ products }: ProductsProps) {
 
+  const dispatch = useDispatch()
+
   const router = useRouter();
 
   function goBack() {
@@ -43,12 +45,15 @@ export default function Products({ products }: ProductsProps) {
 
   return (
     <div className={styles.products}>
-      <h1>Products</h1>
-      <div>
+      <PTag variant='primary' text="Avaliable" />
+      <H1Tag text='Products' />
+      <PTag variant='secondary' text="Click on a product to proceed" />
+      <div className={styles.productList}>
         {products.map((product)=>{
 
           function selectProduct() {
-            router.push("/start/" + product.program);
+            dispatch(change(product.program))
+            router.push("/start");
           }
 
           return (

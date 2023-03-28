@@ -5,6 +5,28 @@
     justify-content: center;
     width: 725px;
     height: 725px;
+    padding: 0 100px;
     background-color: #000000;
-    color: #ffffff;
+}
+
+.products p {
+    margin-bottom: 10px;
+}
+
+.products h1 {
+    margin-bottom: 20px;
+}
+
+.products button {
+    margin-top: 40px;
+}
+
+.products .productList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+    overflow: auto;
+    height: 300px;
 }
